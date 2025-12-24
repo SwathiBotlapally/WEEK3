@@ -1,1 +1,25 @@
-Run analysis.py to generate report.
+# 📊 Sales Data Analysis Report
+
+## Dataset Details
+The dataset contains sales transactions with the following columns:
+- Date
+- Product
+- Quantity
+- Price
+- Customer_ID
+- Region
+- Total_Sales
+
+## Analysis Performed
+- Cleaned missing values
+- Removed duplicate records
+- Calculated total revenue
+- Identified best-selling product
+- Computed average sales per transaction
+
+## Key Findings
+- Phones and Laptops generate the highest revenue.
+- Regional sales distribution can be analyzed further.
+
+## Conclusion
+This project successfully demonstrates data loading, cleaning, analysis, and reporting using pandas.
