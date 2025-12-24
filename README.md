@@ -1,14 +1,19 @@
-# Simple Sales Data Analysis
+# 📊 Sales Data Analysis Report
 
-This project analyzes a small sales dataset using Python and pandas.
+## Project Overview
+This project analyzes a sales dataset using Python and pandas to extract meaningful business insights.
 
-## Files
-- `sales.csv` - sample dataset
-- `analysis.py` - Python script to analyze data
-- `report.txt` - auto-generated analysis report
+## Dataset Description
+The dataset contains product-wise sales information including quantity sold and price.
 
-## How to Run
-```bash
-pip install pandas
-python analysis.py
-```
+## Metrics Calculated
+- Total Revenue
+- Best-Selling Product
+- Average Sales per Transaction
+
+## Key Insights
+- Laptops and Mobiles contribute the highest revenue.
+- Consistent pricing helped identify accurate revenue trends.
+
+## Conclusion
+The analysis successfully demonstrates data loading, cleaning, and reporting using pandas.
