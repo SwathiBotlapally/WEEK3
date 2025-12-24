@@ -1,27 +1,52 @@
+
 import pandas as pd
 
-df = pd.read_csv("sales.csv")
+# Load the dataset
+df = pd.read_csv("sales_data.csv")
 
-df["Sales"] = df["Price"] * df["Quantity"]
+# ---------------------------
+# Explore the data
+# ---------------------------
+print("Dataset Shape:", df.shape)
+print("\nColumns:\n", df.columns)
+print("\nData Types:\n", df.dtypes)
 
-total_sales = df["Sales"].sum()
+# ---------------------------
+# Clean the data
+# ---------------------------
 
-product_sales = df.groupby("Product")["Sales"].sum()
-best_product = product_sales.idxmax()
-best_product_sales = product_sales.max()
+# Handle missing values
+df['Quantity'] = df['Quantity'].fillna(0)
+df['Price'] = df['Price'].fillna(0)
 
-report = f"""SALES ANALYSIS REPORT
----------------------
-Total Sales: {total_sales}
+# Recalculate Total_Sales if missing
+df['Total_Sales'] = df['Quantity'] * df['Price']
 
-Best Selling Product: {best_product}
-Sales from Best Product: {best_product_sales}
+# Remove duplicate rows
+df = df.drop_duplicates()
 
-Product-wise Sales:
-{product_sales}
-"""
+# ---------------------------
+# Analyze sales
+# ---------------------------
 
-with open("report.txt", "w") as f:
-    f.write(report)
+# 1. Total Revenue
+total_revenue = df['Total_Sales'].sum()
 
-print(report)
+# 2. Best-Selling Product (by revenue)
+best_product = df.groupby('Product')['Total_Sales'].sum().idxmax()
+best_product_sales = df.groupby('Product')['Total_Sales'].sum().max()
+
+# 3. Average Sales per Transaction
+average_sales = df['Total_Sales'].mean()
+
+# ---------------------------
+# Display Report
+# ---------------------------
+print("\n📊 SALES ANALYSIS REPORT")
+print("-" * 30)
+print(f"Total Revenue: ₹{total_revenue:,.2f}")
+print(f"Best-Selling Product: {best_product}")
+print(f"Revenue from Best Product: ₹{best_product_sales:,.2f}")
+print(f"Average Sales per Transaction: ₹{average_sales:,.2f}")
+print("-" * 30)
+print("Analysis completed successfully ✅")
